@@ -74,7 +74,7 @@ body {
 .ele-wrapper {
   -webkit-animation: ele-movement 1s infinite linear;
           animation: ele-movement 1s infinite linear;
-  left: 3.2rem;
+  left: 50%;
   position: absolute;
   top: 50%;
   -webkit-transform: translate3D(-50%, -75%, 0);
