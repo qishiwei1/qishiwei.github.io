@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <link rel="prefetch" href="index_all.jpg">
+    <link rel="prerender" href="index_all.jpg">
+    <style type="text/css">
+        body {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: sans-serif;
+            font-size: 14px;
+        }
+
+        body,
+        html {
+            width: 100%;
+            height: 100%;
+        }
+
+        .show_page {
+            width: 100%;
+            background-size: 100%;
+            background-color: #fff;
+        }
+
+        .btn_show {
+            position: absolute;
+            top: -20%;
+            border: 2.4px inset rgb(54, 188, 250);
+            margin-left: 50%;
+            left: -64px;
+            width: 128px;
+            height: 48px;
+            text-align: center;
+            border-radius: 8px;
+            line-height: 40px;
+            font-size: 1em;
+            box-sizing: border-box;
+            transition: all .7s ease-in-out .2s;
+            font-weight: lighter;
+            transform: rotate(180deg);
+        }
+
+        body:hover .btn_show {
+            top: 80%;
+            transform: rotate(360deg);
+        }
+
+        .btn_show>a {
+            text-decoration: none;
+            text-align: center;
+            color: rgb(238, 215, 215);
+        }
+
+        .btn_show:hover {
+            border: 1.6px outset rgba(38, 133, 139, 0.993);
+            color: rgb(255, 255, 255);
+            font-size: 1em;
+            background-color: rgba(76, 219, 255, 0.562);
+        }
+
+        .btn_show:active {
+            border: 2.4px inset black;
+        }
+
+        .btn_show>a:hover {
+            font-weight: normal;
+            color: rgb(255, 255, 255);
+        }
+
+
+        body {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: sans-serif;
+            font-size: 14px;
+        }
+
+        body,
+        html {
+            width: 100%;
+            height: 100%;
+        }
+
+        .show_page {
+            width: 100%;
+            background-size: 100%;
+            /* background-color: antiquewhite; */
+            background-image: url(index_all.jpg);
+            background-repeat: no-repeat;
+            background-position-x: 45%;
+            background-position-y: 85%;
+            color: rgb(223, 223, 223);
+        }
+
+        .btn_show {
+            position: absolute;
+            top: -20%;
+            border: 2.4px inset rgb(54, 188, 250);
+            margin-left: 50%;
+            left: -64px;
+            width: 128px;
+            height: 48px;
+            text-align: center;
+            border-radius: 8px;
+            line-height: 40px;
+            font-size: 1em;
+            box-sizing: border-box;
+            transition: all .7s ease-in-out .2s;
+            font-weight: lighter;
+            transform: rotate(180deg);
+        }
+
+        body:hover .btn_show {
+            top: 80%;
+            transform: rotate(360deg);
+        }
+
+        .btn_show>a {
+            text-decoration: none;
+            text-align: center;
+            color: rgb(113, 255, 248);
+        }
+
+        .btn_show:hover {
+            border: 1.6px outset rgba(38, 133, 139, 0.993);
+            color: rgb(255, 255, 255);
+            font-size: 1em;
+            background-color: rgba(76, 219, 255, 0.562);
+        }
+
+        .btn_show:active {
+            border: 2.4px inset black;
+        }
+
+        .btn_show>a:hover {
+            font-weight: normal;
+            color: rgb(255, 255, 255);
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="show_page">
+        <canvas id="canvas"></canvas>
+        <div class="btn_show">
+            <a href="#">ICY's future</a>
+        </div>
+    </div>
+    <script>
+        var canvas = document.getElementById('canvas');
+        var show_page = document.getElementsByClassName('show_page')[0];
+        var num = window.innerHeight;
+        show_page.style.height = num + 'px';
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        var content2d = canvas.getContext('2d');
+        var balls = [];
+        function ball() { //构造函数方法开发
+            this.color = null; //分别为小球的颜色，x y坐标，半径，角度，角度移动x，y坐标
+            this.x = null;
+            this.y = null;
+            this.r = null;
+            this.Angle = null;
+            this.Anglex = null;
+            this.Angley = null;
+            this.init = function (x, y) {
+                // 初始化状态
+                this.x = x;
+                this.y = y;
+                this.r = this.randomNum(5, 30);
+                this.color = this.randomColor();
+                this.Angle = Math.random() * Math.PI * 2;
+                this.Anglex = this.randomNum(10, 12) * Math.cos(this.Angle); //利用三角函数来控制小球的移动方向
+                this.Angley = this.randomNum(10, 12) * Math.sin(this.Angle);
+            };
+            this.randomColor = function () { //随机颜色
+                // return "#" + parseInt(Math.random() * 16777216).toString(16);
+                return 'rgba' + '(' + 255 + ',' + 255 + ',' + 255 + ',' + .3 + ')';
+            };
+            this.randomNum = function (max, min) { //随机坐标**/*-*-+**
+                return Math.random() * max + min;
+            };
+            this.move = function () {
+                this.x += this.Anglex * 1.1;
+                this.y += this.Angley * 1.1;
+                this.r -= 0.35;
+                this.Anglex *= 0.92;
+                this.Angley *= 0.92;
+            }
+        }
+
+        function createBall(x, y) {
+            var count = parseInt(Math.random() * 16 + 20);
+            for (var i = 0; i < count; i++) {
+                var b = new ball();
+                b.init(x, y);
+                balls.push(b);
+            }
+        }
+
+        function Draw() {
+
+            for (var i = 0; i < balls.length; i++) {
+                var b = balls[i];
+                b.move();
+                content2d.beginPath();
+                content2d.fillStyle = b.color;
+                content2d.arc(b.x, b.y, b.r, 0, Math.PI * 2);
+                content2d.fill();
+                content2d.closePath();
+                // console.log(1);
+            }
+        }
+
+        function removeBall() {
+            for (var i = 0; i < balls.length; i++) {
+                var b = balls[i];
+                if (b.r < 0.35) {
+                    balls.splice(i, 1);
+                    i--;
+                }
+            }
+        }
+        loop();
+
+        function loop() {
+            // 清除整个canvas
+            content2d.clearRect(0, 0, canvas.width, canvas.height);
+            Draw();
+            removeBall();
+            // console.log(1);
+            window.requestAnimationFrame(loop);
+        }
+        canvas.onmousemove = function (e) {
+            var x = e.pageX;
+            var y = e.pageY;
+            // console.log(x);
+            createBall(x, y);
+        }
+        canvas.ontouchmove = function (e) {
+            // console.log(1);
+            // console.log(e.clientX);
+            var x = e.touches[0].clientX;
+            var y = e.touches[0].clientY;
+            // console.log(x);  
+            createBall(x, y);
+        }
+        console.log("( ⊙ o ⊙ )一定是特殊的缘分");
+        console.log("让你我相遇");
+        console.log("[██▓▒░]2019好运加载中");
+    </script>
+</body>
+
+</html>
