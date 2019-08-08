@@ -8,20 +8,6 @@
 
 <link rel="stylesheet" type="text/css" href="css/styles.css">
 
-<script>
-	window.onload = function () {
-            getRem(750, 100)
-        };
-        window.onresize = function () {
-            getRem(750, 100)
-        };
-        function getRem(pwidth, prem) {
-            var html = document.getElementsByTagName("html")[0];
-            var oWidth = document.body.clientWidth || document.documentElement.clientWidth;
-            html.style.fontSize = oWidth / pwidth * prem + "px";
-        }	
-</script>
-
 </head>
 <body>
 <div class="ele-container">
