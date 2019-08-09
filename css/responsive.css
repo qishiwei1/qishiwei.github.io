@@ -127,7 +127,7 @@
   header.transparent .nav .open > a:hover,
   header.transparent .nav > li > a:focus,
   header.transparent .nav > li > a:hover {
-    border-color: #363636;
+    border-color: #fff;
   }
   #mobile-search .search-button {
     position: absolute;

@@ -1190,11 +1190,13 @@ blockquote > span {
 /* Dark / Transparent Nav
 /*-------------------------------------------------------*/
 header.dark-nav .navigation {
-  background-color: #171717;
+  /* background-color: rgb(240,220,230); */
+  background-color: #fff;
 }
 
 header.dark-nav .navbar-nav > li > a {
-  color: #fff;
+  color: #000;
+  font-weight: bold;
 }
 
 header.transparent .nav-right,
@@ -1398,7 +1400,7 @@ input.main-search-input:-ms-input-placeholder {
 
 header.dark-nav .navbar-toggle .icon-bar,
 header.transparent .navbar-toggle .icon-bar {
-  background-color: #fff;
+  background-color: #000;
 }
 
 /* Go to Top
@@ -4497,6 +4499,19 @@ input[type="email"].newsletter-input:focus {
   #customizer {
     display: none;
   }
+}
+
+
+/* 阿里云icon 彩色svg */
+.alSvgIcon {
+  width: 20px; 
+  height: 20px;
+  fill: currentColor;
+  overflow: hidden;
+}
+
+.right .alSvgIcon{
+  vertical-align: bottom;
 }
 
 /*# sourceMappingURL=style.css.map */
