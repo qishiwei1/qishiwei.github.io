@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="viewport" content="width=device-width,minimum-scale=1.00001,maximum-scale=1.00001,user-scalable=no,minimal-ui">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<!-- UC默认竖屏 ，UC强制全屏 -->
+<meta name="full-screen" content="yes">
+<meta name="browsermode" content="application">
+<!-- QQ强制竖屏 QQ强制全屏 -->
+<meta name="x5-orientation" content="portrait">
+<meta name="x5-fullscreen" content="true">
+<meta name="x5-page-mode" content="app">
+<meta name="format-detection" content="email=no">
+<title>五子棋</title>
+
+<link type="text/css" href="css/style.css" rel="stylesheet" />
+
+<script>
+function myalert(txt)
+{
+	var obj = document.getElementsByClassName("myalert")[0];
+	var p = obj.getElementsByTagName("p")[0];
+	p.innerHTML=txt;
+	obj.style.display="block";
+	var num1 = 0;
+	obj.style.opacity=num1;
+	var timer = setInterval(function(){
+		num1+=10;
+		obj.style.opacity=num1/100;
+		if(num1 >= 100)
+		{
+			clearInterval(timer);
+			setTimeout(function(){
+				var timer2 = setInterval(function(){
+					num1-=10;
+					obj.style.opacity=num1/100;
+					if(num1 <= 0)
+					{
+						clearInterval(timer2);
+						obj.style.display="none";
+						timer2 = timer = null;
+					};
+				},40)
+			},1500);
+		};
+	},40);
+};
+function suiji(min,max)
+{
+    return parseInt(Math.random()*(max-min+1)+min);
+};
+</script>
+
+</head>
+<body>
+<div class="top">
+	<label>
+		<input value="1" type="radio" name="who">你先
+	</label>
+	<label>
+		<input value="2" type="radio" name="who">我先
+	</label>
+</div>
+<canvas id="mycanvas">
+当前浏览器不支持canvas，请更换浏览器使用！
+</canvas>
+<div class="myalert">
+	<p>请稍等下</p>
+</div>
+<button id="dayinduixiang">打印对象</button>
+
+<script type="text/javascript" src="js/script.js"></script>
+
+<script type="text/javascript">
+//禁止右键菜单
+document.oncontextmenu = function (){
+	alert("请尊重下我的劳动成果哈");
+	return false;
+};
+document.onkeydown=function(event){
+	var e = event || window.event || arguments.callee.caller.arguments[0];
+	//保护源码的措施
+     //F12
+     if(e.keyCode == 123){
+     	alert("请尊重下我的劳动成果哈");
+         return false;
+     //Ctrl+Shift+I
+     }else if((e.ctrlKey) && (e.shiftKey) && (e.keyCode == 73)){
+     	alert("请尊重下我的劳动成果哈");
+         return false;
+     //Shift+F10
+     }else if((e.shiftKey) && (e.keyCode == 121)){
+     	alert("请尊重下我的劳动成果哈");
+         return false;
+     //Ctrl+U
+     }else if((e.ctrlKey) && (e.keyCode == 85)){
+     	alert("请尊重下我的劳动成果哈");
+         return false;
+     };
+};
+</script>
+</body>
+</html>

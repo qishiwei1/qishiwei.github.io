@@ -4508,10 +4508,12 @@ input[type="email"].newsletter-input:focus {
   height: 20px;
   fill: currentColor;
   overflow: hidden;
-}
-
-.right .alSvgIcon{
   vertical-align: bottom;
+}
+.twitter-slider .alSvgIcon{
+  width: 40px;
+  height: 30px;
+  margin-bottom: 10px;
 }
 
 /*# sourceMappingURL=style.css.map */
