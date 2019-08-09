@@ -138,7 +138,7 @@ img.alignright {
 
 ::selection {
   color: #fff;
-  background-color: #c0945c;
+  background-color: rgb(253, 223, 223);
 }
 
 a {

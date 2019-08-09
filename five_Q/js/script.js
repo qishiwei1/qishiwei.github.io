@@ -117,6 +117,10 @@ window.onload=function()
 	{
 		if(isOverWin){
 			myalert("已经结束了");
+			$(".again_one").css('display','block')
+			$(".again_one").click(function(){
+				window.location.reload()
+			})
 			return;
 		};
 		if(select.style.display=="block")
