@@ -6,7 +6,7 @@ body {
 
 .clickLove_liker {
   position: absolute;
-  top: 0%;
+  /* top: 0%; */
   left: 50%;
   transform: translate(-50%, 0%);
 }
@@ -45,4 +45,8 @@ body {
 }
 .clickLove_pig{
   margin: 0 auto;
+}
+
+.hearts-canvas{
+  height: 1200px !important;
 }
