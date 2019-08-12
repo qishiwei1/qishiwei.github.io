@@ -327,11 +327,13 @@
 
     });
 
-
+    // 点击爱心查看的时候 让你爬
     $(".clickLove").click(function(){
-      console.log(111)
+      alert('爬')
       $(".clickLove_pig").css('display','block')
-      $(".clickLove_liker").css('display','none')
+      setTimeout(() => {
+        $(".clickLove_liker").css('display','none')        
+      }, 500);
     })
   </script>
 
